@@ -25,9 +25,6 @@ const ErrorModel = (props) => {
                 </footer>
             </Card>
         </div>
-
-
-
     );
 };
 

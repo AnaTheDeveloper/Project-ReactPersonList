@@ -3,6 +3,7 @@ import classes from './AddUser.module.css';
 import Card from "../UI/Card";
 import Button from "../UI/Button";
 import ErrorModel from "../UI/ErrorModel";
+import Wrapper from "../Helpers/Wrapper";
 
 const AddUser = (props) => {
 
@@ -59,7 +60,8 @@ const AddUser = (props) => {
 
 
     return (
-        <div>
+        // Custom wrapper to avoid div soup.
+        <Wrapper>
             {/*Conditional render on JSK*/}
             {error && <ErrorModel title={error.title} message={error.message} onConfirm={errorHandler}/>}
             {/* I want to make sure that all the different styles in putting on this class don't clash with each other */}
@@ -77,7 +79,7 @@ const AddUser = (props) => {
                     <Button type="submit">Show Interest</Button>
                 </form>
             </Card>
-        </div>
+        </Wrapper>
 
     );
 };
