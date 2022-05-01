@@ -10,7 +10,7 @@ const AddUser = (props) => {
     const nameInputRef = useRef();
     const ageInputRef = useRef();
 
-
+    //Controlled approach because their internal state in controlled by react.
     // const [enteredName, setEnteredName] = useState('');
     //
     // const [enteredAge, setEnteredAge] = useState('');
@@ -81,6 +81,7 @@ const AddUser = (props) => {
             <Card className={classes.input}>
                 {/*When the form gets submitted call the addUserHandler function above.*/}
                 <form onSubmit={addUserHandler}>
+                    {/*Uncontrolled components*/}
                     <label htmlFor="name">Name</label>
                     {/*OnChange listens to the keystrokes and on each keystroke calls the method.*/}
                     {/*<input is="name" type="text" value={enteredName} onChange={nameChangeHandler} ref={nameInputRef}/>*/}
