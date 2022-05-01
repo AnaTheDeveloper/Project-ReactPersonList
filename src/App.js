@@ -18,23 +18,24 @@ function App() {
 
 
   return (
-    <div className={classes.app}>
+      //React fragment <> & </> or you can use React.Fragment
+    <React.Fragment>
+        <div className={classes.app}>
+            <Title>
+                <p>Show your interest in programming!</p>
+            </Title>
 
-        <Title>
-            <p>Show your interest in programming!</p>
-        </Title>
+            <Subtitle>
+                Sign Up Below
+            </Subtitle>
 
-        <Subtitle>
-            Sign Up Below
-        </Subtitle>
+            {/*Adding users data*/}
+            <AddUser onAdduser={addUserHandler}/>
 
-        {/*Adding users data*/}
-        <AddUser onAdduser={addUserHandler}/>
-
-        {/*Outputting users data*/}
-        <UsersList users={usersList}/>
-
-    </div>
+            {/*Outputting users data*/}
+            <UsersList users={usersList}/>
+        </div>
+    </React.Fragment>
   );
 }
 
