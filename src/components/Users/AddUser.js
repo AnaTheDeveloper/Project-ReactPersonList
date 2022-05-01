@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import classes from './AddUser.module.css';
 import Card from "../UI/Card";
 import Button from "../UI/Button";
+import ErrorModel from "../UI/ErrorModel";
 
 const AddUser = (props) => {
 
@@ -9,17 +10,28 @@ const AddUser = (props) => {
 
     const [enteredAge, setEnteredAge] = useState('');
 
+    //Check if error needs to come up or not.
+    const [error, setError] = useState();
+
     //Function is called when submit button is pressed.
     const addUserHandler = (event) => {
         event.preventDefault();
 
         //Adding validation
         if (enteredName.trim().length === 0 || enteredAge.trim().length === 0) {
+            setError({
+                title: 'Invalid Input',
+                message: 'Please enter a valid name and age.'
+            });
             return;
         }
 
         //The + is added to ensure a conversion is made. enteredAge is a string but its being compared against a number.
         if (+enteredAge < 1) {
+            setError({
+                title: 'Invalid age',
+                message: 'Please enter a valid age, greater than 0.'
+            });
             return;
         }
 
@@ -41,9 +53,15 @@ const AddUser = (props) => {
         setEnteredAge(event.target.value);
     }
 
+    const errorHandler = () => {
+        setError(null);
+    }
+
 
     return (
         <div>
+            {/*Conditional render on JSK*/}
+            {error && <ErrorModel title={error.title} message={error.message} onConfirm={errorHandler}/>}
             {/* I want to make sure that all the different styles in putting on this class don't clash with each other */}
             <Card className={classes.input}>
                 {/*When the form gets submitted call the addUserHandler function above.*/}
